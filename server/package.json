@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "env-cmd dev ts-node ./src/index",
+    "prod": "env-cmd prod nodemon ./build/index",
+    "start": "npm run build && npm run prod"
   },
   "keywords": [],
   "author": "nur-sh",
