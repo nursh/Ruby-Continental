@@ -1,10 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { Category } from './Category';
+import { Entity, Column, PrimaryColumn, BeforeInsert } from "typeorm";
+import { v4 as uuid } from "uuid";
 
-@Entity()
+import { Category } from "./Category";
+
+@Entity("MenuItem")
 export class MenuItem {
-
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: string;
 
   @Column()
@@ -13,7 +14,11 @@ export class MenuItem {
   @Column()
   price: number;
 
-  @Column({ type: 'enum', enum: Category })
+  @Column("enum", { enum: Category })
   category: Category;
 
+  @BeforeInsert()
+  createId() {
+    this.id = uuid();
+  }
 }

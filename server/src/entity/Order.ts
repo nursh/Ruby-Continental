@@ -1,10 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { OrderItem } from './OrderItem';
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  OneToMany,
+  BeforeInsert
+} from "typeorm";
+import { v4 as uuid } from "uuid";
 
-@Entity()
+import { OrderItem } from "./OrderItem";
+
+@Entity("Order")
 export class Order {
-
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn("uuid")
   id: string;
 
   @Column()
@@ -13,4 +20,8 @@ export class Order {
   @OneToMany(type => OrderItem, item => item.order)
   items: OrderItem[];
 
+  @BeforeInsert()
+  createId() {
+    this.id = uuid();
+  }
 }

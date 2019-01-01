@@ -8,14 +8,12 @@ import "reflect-metadata";
 
 import resolvers from './graphql/resolvers';
 
-
 require('dotenv').config({ path: '../.env' });
 
 class App {
 
   public app: express.Application;
   private server: ApolloServer;
-
 
   constructor() {
     this.app = express();
@@ -31,6 +29,7 @@ class App {
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.server.applyMiddleware({ app: this.app });
   }
+
 }
 
-export default new App().app;
+export default new App().app ;

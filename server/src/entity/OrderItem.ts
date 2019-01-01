@@ -1,10 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryColumn, Column, JoinColumn, ManyToOne, BeforeInsert } from 'typeorm';
+import { v4 as uuid } from 'uuid';
+
 import { Order } from './Order';
 
-@Entity()
+@Entity("OrderItem")
 export class OrderItem {
 
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn("uuid")
   id: string;
 
   @Column()
@@ -18,4 +20,9 @@ export class OrderItem {
 
   @ManyToOne(type => Order, order => order.items)
   order: Order;
+
+  @BeforeInsert()
+  createId() {
+    this.id = uuid();
+  }
 }
