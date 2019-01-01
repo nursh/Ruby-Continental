@@ -1,0 +1,85 @@
+type Query {
+  menuItem(id: ID!): MenuItem!
+  menuItems(category: Category): [MenuItem!]!
+  order(id: ID!): Order!
+  orders: [Order!]!
+  orderItem(id: ID!): OrderItem!
+  orderItems: [OrderItem!]!
+}
+
+type Mutation {
+  createMenuItem(data: CreateMenuItemInput!): MenuItem!
+  updateMenuItem(id: ID!, data: UpdateMenuItemInput!): MenuItem!
+  deleteMenuItem(id: ID!): MenuItem!
+  createOrder: Order!
+  updateOrder(id: ID!, data: UpdateOrderInput!): Order!
+  deleteOrder(id: ID!): Order!
+  createOrderItem(data: CreateOrderItemInput!): OrderItem!
+  updateOrderItem(id: ID!, data: UpdateOrderItemInput!): OrderItem!
+  deleteOrderItem(id: ID!): OrderItem!
+}
+
+input CreateMenuItemInput {
+  name: String!
+  price: Float!
+  category: Category!
+}
+
+input UpdateMenuItemInput {
+  name: String
+  price: Float
+  category: Category
+}
+
+input CreateOrderItemInput {
+  name: String!
+  quantity: Int!
+  price: Float!
+  order: ID!
+}
+
+input UpdateOrderItemInput {
+  quantity: Int
+  price: Int
+}
+
+input UpdateOrderInput {
+  total: Float
+}
+
+type MenuItem {
+  id: ID!
+  name: String!
+  price: Float!
+  category: Category!
+}
+
+type Order {
+  id: ID!
+  items: [OrderItem!]!
+  total: Float!
+}
+
+type OrderItem {
+  id: ID!
+  name: String!
+  quantity: Int!
+  price: Float!
+  order: Order!
+}
+
+enum Category {
+  BREAKFAST
+  MAIN_DISH
+  SOUPS
+  BITES
+  RICE_DISHES
+  AFRICAN_HOT_POT
+  DELIGHTS
+  COLD_STARTER
+  PEPPERED_BITES
+  PET_DRINKS
+  BOTTLE_DRINKS
+  CAN_DRINKS
+  JUICE
+}

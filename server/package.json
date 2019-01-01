@@ -24,6 +24,7 @@
     "dotenv": "^6.2.0",
     "env-cmd": "^8.0.2",
     "express": "^4.16.4",
+    "graphql-import": "^0.7.1",
     "pg": "^7.7.1",
     "reflect-metadata": "^0.1.12",
     "ts-node": "^7.0.1",
