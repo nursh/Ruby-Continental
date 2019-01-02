@@ -1,12 +1,12 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as cors from 'cors';
-import { ApolloServer } from 'apollo-server-express';
-import { importSchema } from 'graphql-import';
+import express = require('express');
+import bodyParser = require('body-parser');
+import cors = require('cors');
+import { ApolloServer, gql } from 'apollo-server-express';
 import "reflect-metadata";
 
 
 import resolvers from './graphql/resolvers';
+import { readFileSync } from 'fs';
 
 require('dotenv').config({ path: '../.env' });
 
@@ -18,7 +18,7 @@ class App {
   constructor() {
     this.app = express();
     this.server = new ApolloServer({
-      typeDefs: importSchema('./src/graphql/schema.graphql'),
+      typeDefs: gql(readFileSync('./src/graphql/schema.graphql', 'UTF-8')),
       resolvers
     });
     this.config();
