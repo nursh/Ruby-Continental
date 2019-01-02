@@ -1,4 +1,9 @@
-import { Entity, Column, PrimaryColumn, BeforeInsert } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  BeforeInsert
+} from "typeorm";
 import { v4 as uuid } from "uuid";
 
 import { Category } from "./Category";
