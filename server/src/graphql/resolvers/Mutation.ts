@@ -14,8 +14,10 @@ export default {
   },
   deleteOrder: async (_: any, { id }: any) => {
     const orderRepo = getConnection().getRepository(Order);
-    const order = orderRepo.delete(id);
-    return order;
+    const order = await orderRepo.delete(id);
+    const { affectedRows } = order.raw;
+    if (affectedRows === 1) return true;
+    return false;
   },
   createMenuItem: async (_: any, { data }: any) => {
     const menuRepo = getConnection().getRepository(MenuItem);

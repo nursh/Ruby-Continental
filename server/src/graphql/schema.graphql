@@ -11,13 +11,13 @@ type Query {
 type Mutation {
   createMenuItem(data: CreateMenuItemInput!): MenuItem!
   updateMenuItem(id: ID!, data: UpdateMenuItemInput!): MenuItem!
-  deleteMenuItem(id: ID!): MenuItem!
+  deleteMenuItem(id: ID!): Boolean!
   createOrder: Order!
   updateOrder(id: ID!, data: UpdateOrderInput!): Order!
-  deleteOrder(id: ID!): Order!
+  deleteOrder(id: ID!): Boolean!
   createOrderItem(data: CreateOrderItemInput!): OrderItem!
   updateOrderItem(id: ID!, data: UpdateOrderItemInput!): OrderItem!
-  deleteOrderItem(id: ID!): OrderItem!
+  deleteOrderItem(id: ID!): Boolean!
 }
 
 input CreateMenuItemInput {

@@ -15,7 +15,7 @@ export class Order {
   id: string;
 
   @Column()
-  total: number;
+  total: number = 0;
 
   @OneToMany(type => OrderItem, item => item.order, { eager: true })
   items: OrderItem[];
