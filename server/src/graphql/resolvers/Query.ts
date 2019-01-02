@@ -3,7 +3,7 @@ import { getConnection } from "typeorm";
 import { MenuItem } from "../../entity/MenuItem";
 import { Order } from "../../entity/Order";
 import { OrderItem } from "../../entity/OrderItem";
-import { Category } from "../../entity/Category";
+
 import "../../db";
 
 export default {

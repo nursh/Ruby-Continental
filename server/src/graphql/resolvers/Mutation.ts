@@ -39,5 +39,12 @@ export default {
     const newOrderItem = orderItemRepo.create({ name, price, quantity, order });
     const insertedOrderItem = await orderItemRepo.save(newOrderItem);
     return insertedOrderItem;
+  },
+  deleteOrderItem: async (_: any, { id }: any): Promise<Boolean> => {
+    const orderItemRepo = getConnection().getRepository(OrderItem);
+    const orderItem = await orderItemRepo.delete(id);
+    const { affectedRows } = orderItem.raw;
+    if (affectedRows === 1) return true;
+    return false;
   }
 };
