@@ -17,7 +17,7 @@ export class Order {
   @Column()
   total: number;
 
-  @OneToMany(type => OrderItem, item => item.order)
+  @OneToMany(type => OrderItem, item => item.order, { eager: true })
   items: OrderItem[];
 
   @BeforeInsert()
