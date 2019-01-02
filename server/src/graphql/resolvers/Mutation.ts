@@ -12,6 +12,13 @@ export default {
     const insertedOrder = await orderRepo.save(newOrder);
     return insertedOrder;
   },
+  updateOrder: async (_: any, { id, data }: any): Promise<Boolean> => {
+    const orderRepo = getConnection().getRepository(Order);
+    const updatedOrder = await orderRepo.update(id, { total: data.total });
+    const { affectedRows } = updatedOrder.raw;
+    if (affectedRows === 1) return true;
+    return false;
+  },
   deleteOrder: async (_: any, { id }: any): Promise<Boolean> => {
     const orderRepo = getConnection().getRepository(Order);
     const order = await orderRepo.delete(id);
@@ -25,6 +32,13 @@ export default {
     const newItem = menuRepo.create({ name, price, category });
     const insertedItem = await menuRepo.save(newItem);
     return insertedItem;
+  },
+  updateMenuItem: async (_: any, { id, data}: any): Promise<Boolean> => {
+    const menuItemRepo = getConnection().getRepository(MenuItem);
+    const updatedMenuItem = await menuItemRepo.update(id, { ...data });
+    const { affectedRows } = updatedMenuItem.raw;
+    if (affectedRows === 1) return true;
+    return false;
   },
   deleteMenuItem: async (_: any, { id }: any): Promise<Boolean> => {
     const menuItemRepo = getConnection().getRepository(MenuItem);
