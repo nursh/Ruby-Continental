@@ -12,6 +12,11 @@ export default {
     const insertedOrder = await orderRepo.save(newOrder);
     return insertedOrder;
   },
+  deleteOrder: async (_: any, { id }: any) => {
+    const orderRepo = getConnection().getRepository(Order);
+    const order = orderRepo.delete(id);
+    return order;
+  },
   createMenuItem: async (_: any, { data }: any) => {
     const menuRepo = getConnection().getRepository(MenuItem);
     const { name, price, category } = data;
@@ -24,9 +29,6 @@ export default {
     const { name, price, quantity, order } = data;
     const newOrderItem = orderItemRepo.create({ name, price, quantity, order });
     const insertedOrderItem = await orderItemRepo.save(newOrderItem);
-    const createdOrderItem = await orderItemRepo.findOne(insertedOrderItem.id, {
-      relations: ["order"]
-    });
-    return createdOrderItem;
+    return insertedOrderItem;
   }
 };
