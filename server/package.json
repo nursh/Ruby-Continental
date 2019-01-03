@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "env-cmd dev nodemon --ext ts,graphql --exec ts-node ./src/index",
-    "prod": "env-cmd prod nodemon ./build/index",
+    "prod": "env-cmd prod node ./build/index",
     "start": "npm run build && npm run prod"
   },
   "keywords": [],
