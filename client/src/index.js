@@ -7,6 +7,7 @@ import { createStore } from 'redux';
 
 import App from "./components/App";
 import reducers from './reducers';
+import "./sass/main.scss";
 import * as serviceWorker from "./serviceWorker";
 
 const client = new ApolloClient({
