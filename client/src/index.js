@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ApolloClient } from "apollo-boost";
+import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';

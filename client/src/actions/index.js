@@ -1,27 +1,32 @@
-import { ADD_ITEM, REMOVE_ITEM, CREATE_ORDER, ADD_QUANTITY, REDUCE_QUANTITY } from "./actionTypes";
+import {
+  ADD_ITEM,
+  REMOVE_ITEM,
+  CREATE_ORDER,
+  ADD_QUANTITY,
+  REDUCE_QUANTITY
+} from "./types";
 
-
-export const createOrder = (orderId) => ({
+export const createOrder = orderId => ({
   type: CREATE_ORDER,
   payload: orderId
 });
 
-export const addItemToOrder = (item) => ({
+export const addItemToOrder = item => ({
   type: ADD_ITEM,
   payload: item
 });
 
-export const removeItemFromOrder = (item) => ({
+export const removeItemFromOrder = itemName => ({
   type: REMOVE_ITEM,
-  payload: item
+  payload: itemName
 });
 
-export const addItemQuantity = (item) => ({
+export const addItemQuantity = itemName => ({
   type: ADD_QUANTITY,
-  payload: item
+  payload: itemName
 });
 
-export const reduceItemQuantity = (item) => ({
+export const reduceItemQuantity = itemName => ({
   type: REDUCE_QUANTITY,
-  payload: item
+  payload: itemName
 });
