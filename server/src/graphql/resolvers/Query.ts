@@ -3,6 +3,7 @@ import { getConnection } from "typeorm";
 import { MenuItem } from "../../entity/MenuItem";
 import { Order } from "../../entity/Order";
 import { OrderItem } from "../../entity/OrderItem";
+import { Category } from "../../entity/Category";
 
 import "../../db";
 
@@ -44,5 +45,9 @@ export default {
     const orderItemRepo = getConnection().getRepository(OrderItem);
     const orderItems = await orderItemRepo.find({ relations: ["order"] });
     return orderItems;
+  },
+  categories: () => {
+    const categories = Object.keys(Category).filter(k => typeof Category[k as any] === "number"); 
+    return categories;
   }
 };
