@@ -7,7 +7,6 @@ import { OrderItem } from "../../entity/OrderItem";
 import "../../db";
 
 export default {
-  name: () => "Nuradeen Sheikh",
   menuItem: async (_: any, args: any) => {
     const { id } = args;
     const menuRepo = getConnection().getRepository(MenuItem);
