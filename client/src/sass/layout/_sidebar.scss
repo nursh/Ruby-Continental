@@ -3,9 +3,25 @@
   position: sticky;
   padding: 2rem 2rem;
 
+  &__categories {
+    margin-top: 3rem;
+  }
+
+  &__item {
+    margin-bottom: 1rem;
+  }
+
   &__icon {
     height: 3rem;
     width: 3rem;
+  }
+
+  &__name {
+    color: $color-primary;
+    display: inline-block;
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 }
 
