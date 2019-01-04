@@ -2,4 +2,11 @@
   background-color: $sidebar-color;
   position: sticky;
   padding: 2rem 2rem;
+
+  &__icon {
+    height: 3rem;
+    width: 3rem;
+  }
 }
+
+
