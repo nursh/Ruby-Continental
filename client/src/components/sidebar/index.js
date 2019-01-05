@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import menuCategories from "../utils/categories";
+import menuCategories from "../../utils/categories";
 import SidebarItem from "./SidebarItem";
 
 class Sidebar extends Component {

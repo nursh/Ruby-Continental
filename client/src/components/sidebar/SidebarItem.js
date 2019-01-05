@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-import sprite from '../img/sprite.svg';
+import sprite from '../../img/sprite.svg';
 
 class SidebarItem extends Component {
 
