@@ -1,14 +1,22 @@
 .sidebar {
   background-color: $sidebar-color;
   position: sticky;
-  padding: 2rem 2rem;
+  padding: 2rem 0;
 
   &__categories {
     margin-top: 3rem;
   }
 
   &__item {
-    margin-bottom: 1rem;
+    padding: 1rem;
+    padding-left: 3rem;
+  }
+
+  &__item:hover,
+  &__item--active {
+    background-color: $highlight-color;
+    border-left: .5rem solid $color-primary;
+    cursor: pointer;
   }
 
   &__icon {
