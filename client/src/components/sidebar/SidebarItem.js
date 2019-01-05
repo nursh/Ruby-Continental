@@ -5,7 +5,8 @@ import sprite from '../../img/sprite.svg';
 
 class SidebarItem extends Component {
 
-  toggleActive = (index) => {
+  toggleActive = () => {
+    const { index } = this.props;
     this.props.toggleActiveItems(index);
   }
 
@@ -16,7 +17,7 @@ class SidebarItem extends Component {
     classNames += (this.props.active) ? 'sidebar__item--active' : '';
 
     return (
-      <div key={name} className={classNames} onClick={() => this.toggleActive(index)}>
+      <div key={name} className={classNames} onClick={() => this.toggleActive()}>
         <a href="#" className="sidebar__link">
           <svg className="sidebar__icon">
             <use xlinkHref={`${sprite}#${src}`} />
