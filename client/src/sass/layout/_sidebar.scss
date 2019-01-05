@@ -8,28 +8,47 @@
   }
 
   &__item {
-    padding: 1rem;
-    padding-left: 3rem;
+    position: relative;
   }
 
-  &__item:hover,
-  &__item--active {
+  &__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     background-color: $highlight-color;
     border-left: .5rem solid $color-primary;
     cursor: pointer;
+    height: 100%;
+    width: 1px;
+    transform: scaleY(0);
+    transition: all .5s;
   }
+
+  &__item:hover::before,
+  &__item--active::before {
+    width: 100%;
+    transform: scaleY(1);
+  } 
 
   &__icon {
     height: 3rem;
     width: 3rem;
+    margin-right: 1.5rem;
   }
 
-  &__name {
+  &__link:link,
+  &__link:visited {
     color: $color-primary;
-    display: inline-block;
-    margin-left: 1.5rem;
+    display: block;
     font-size: 1.5rem;
     font-weight: 700;
+    text-decoration: none;
+    padding: 1rem;
+    padding-left: 4rem;
+
+    position: relative;
+    z-index: 10;
   }
 }
 

@@ -8,10 +8,6 @@ class Sidebar extends Component {
     activeItems: []
   };
 
-  // Use state to hold list of sidebar categories
-  // Use func to reset the array of active list(passing the index)
-  // use map function, then setstate
-
   toggleActiveItems = index => {
     const { activeItems } = this.state;
     const updatedItems = activeItems.map((item, itemNo) =>

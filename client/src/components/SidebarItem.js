@@ -13,14 +13,16 @@ class SidebarItem extends Component {
     const { name, src, index } = this.props;
 
     let classNames = 'sidebar__item ';
-    classNames +=  this.props.active && 'sidebar__item--active';
+    classNames += (this.props.active) ? 'sidebar__item--active' : '';
 
     return (
       <div key={name} className={classNames} onClick={() => this.toggleActive(index)}>
-        <svg className="sidebar__icon">
-          <use xlinkHref={`${sprite}#${src}`} />
-        </svg>
-        <span className="sidebar__name">{name}</span>
+        <a href="#" className="sidebar__link">
+          <svg className="sidebar__icon">
+            <use xlinkHref={`${sprite}#${src}`} />
+          </svg>
+          <span>{name}</span>
+        </a>
       </div>
     );
   }
