@@ -1,0 +1,22 @@
+.menu-category {
+
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-column-gap: 1.5rem;
+  align-items: end;
+
+  margin: 0 auto;
+  width: 80%;
+
+  &__icon {
+    height: 6rem;
+    width: 6rem;
+    grid-column: 1;
+  }
+
+  &__heading {
+    color: $color-primary;
+    font-size: 3rem;
+    margin-bottom: -1.2rem;
+  }
+}

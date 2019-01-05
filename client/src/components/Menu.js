@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Sidebar from "./sidebar";
 import HeaderIcons from "./header/HeaderIcons";
+import MenuCategory from "./MenuCategory";
 
 class Menu extends Component {
   render() {
@@ -10,6 +11,9 @@ class Menu extends Component {
         <Sidebar />
         <div className="menu-content">
           <HeaderIcons />
+          <div>
+            <MenuCategory />
+          </div>
         </div>
       </div>
     );
