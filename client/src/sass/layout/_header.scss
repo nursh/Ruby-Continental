@@ -1,10 +1,33 @@
 .header-icons {
   display: flex;
+  justify-content: flex-end;
+  padding: 2rem 3rem;
 
   &__item {
     
     &:not(:last-child) {
-      margin-right: 2rem;
+      margin-right: 10rem;
     }
+  }
+
+  &__icon {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  &__link::after {
+    content: "";
+    display: block;
+    background-color: $color-primary;
+    margin: 0 auto;
+    margin-top: .5rem;
+    width: 0;
+    height: .5rem;
+    transition: all .2s;
+  }
+
+  &__link--active::after,
+  &__link:hover::after {
+    width: 2rem;
   }
 }
