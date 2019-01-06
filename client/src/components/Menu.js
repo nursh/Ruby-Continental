@@ -11,7 +11,7 @@ class Menu extends Component {
   render() {
     const categories = menuCategories();
     return (
-      <div className="menu">
+      <div className="menu" id="menu">
         <Sidebar categories={categories}/>
         <div className="menu-content">
           <HeaderIcons />

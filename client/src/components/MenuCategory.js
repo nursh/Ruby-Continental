@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 
 
+import Modal from './modal';
 import sprite from '../img/sprite.svg';
 
 class MenuCategory extends Component {
-
-  shout = () => {
-    alert('Hurray');
-  }
 
   render() {
     return (
@@ -17,11 +14,14 @@ class MenuCategory extends Component {
         </svg>
         <h3 className="menu-category__heading">Juice</h3>
         <div className="menu-category__items">
-          <div className="menu-category__item" onClick={this.shout}>
-            <span>Orange Juice</span>
-            <span>&#8358;500</span>
-          </div>
+          <a href="#modal" className="menu-category__modal">
+            <div className="menu-category__item">
+              <span>Orange Juice</span>
+              <span>&#8358;500</span>
+            </div>
+          </a>
         </div>
+        <Modal />
       </div>
     );
   }
