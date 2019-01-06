@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import menuCategories from "../../utils/categories";
 import SidebarItem from "./SidebarItem";
 
 class Sidebar extends Component {
@@ -17,13 +16,13 @@ class Sidebar extends Component {
   };
 
   componentDidMount() {
-    const activeItems = menuCategories().map(item => false);
+    const activeItems = this.props.categories.map(item => false);
     this.setState({ activeItems });
   }
 
   renderCategories() {
     const { activeItems } = this.state;
-    return menuCategories().map(({ name, src }, index) => {
+    return this.props.categories.map(({ name, src }, index) => {
       console.log(activeItems[index]);
       return (
         <SidebarItem

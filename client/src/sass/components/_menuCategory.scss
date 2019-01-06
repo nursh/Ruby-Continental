@@ -2,21 +2,47 @@
 
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-column-gap: 1.5rem;
+  grid-gap: 2rem;
   align-items: end;
 
-  margin: 0 auto;
-  width: 80%;
+  margin: 4rem auto;
+  margin-bottom: 10rem;
+  width: 70%;
 
   &__icon {
     height: 6rem;
     width: 6rem;
-    grid-column: 1;
   }
 
   &__heading {
     color: $color-primary;
     font-size: 3rem;
-    margin-bottom: -1.2rem;
+    transform: translateY(1.2rem);
   }
+
+  &__items {
+    grid-column: 2;
+  }
+
+  &__item {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.7rem;
+    border-bottom: .2rem solid #000;
+    cursor: pointer;
+    font-weight: 400;
+    transition: all .2s;
+
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+
+    &:hover {
+      width: 65%;
+      padding: 1rem 2rem;
+    }
+  }
+
 }

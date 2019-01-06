@@ -12,7 +12,7 @@ class IconItem extends Component {
   }
 
   render() {
-    const { name, path, active, index } = this.props;
+    const { name, path, active } = this.props;
     const selected = active ? 'header-icons__link--active': '';
     return (
       <div className="header-icons__item">

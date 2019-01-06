@@ -11,7 +11,7 @@ class SidebarItem extends Component {
   }
 
   render() {
-    const { name, src, index } = this.props;
+    const { name, src } = this.props;
 
     let classNames = 'sidebar__item ';
     classNames += (this.props.active) ? 'sidebar__item--active' : '';
