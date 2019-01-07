@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { graphql } from 'react-apollo';
+import { connect } from 'react-redux';
 
 
 import menuCategories from "../utils/categories";
@@ -8,6 +9,8 @@ import HeaderIcons from "./header/HeaderIcons";
 import MenuCategory from "./MenuCategory";
 import Loading from './Loading';
 import { getMenuItems } from '../graphql/MenuItems';
+import { addItemToOrder } from '../actions';
+
 
 class Menu extends Component {
 
@@ -39,6 +42,7 @@ class Menu extends Component {
               categories={categories}
               selectedItem={this.state.selectedItem}
               menuItems={this.state.menuItems}
+              addItemToOrder={this.props.addItemToOrder}
             />
           </div>
         </div>
@@ -47,4 +51,5 @@ class Menu extends Component {
   }
 }
 
-export default graphql(getMenuItems)(Menu);
+const mapStateToProps = ({ items }) => ({ items });
+export default graphql(getMenuItems)(connect(mapStateToProps, { addItemToOrder })(Menu));

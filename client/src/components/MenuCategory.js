@@ -20,7 +20,7 @@ class MenuCategory extends Component {
   }
 
   render() {
-    if (!this.props.selectedItem) return `Select a menu item`
+    if (!this.props.selectedItem) return <h3 className="menu-category__empty">Select a menu item</h3>
     const { name, src } = this.props.selectedItem;
     return (
       <div className="menu-category">
@@ -47,7 +47,8 @@ class MenuCategory extends Component {
             hide={this.hideModal}
             show={this.state.show}
             item={this.state.item} 
-            quantity={0}
+            text="Add to order"
+            action={this.props.addItemToOrder}
           />
         </div>
 

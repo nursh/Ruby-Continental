@@ -8,6 +8,13 @@
   margin: 4rem auto;
   width: 70%;
 
+  &__empty {
+    font-size: 4rem;
+    padding: 6rem;
+    color: $text-color;
+    text-align: center;
+  }
+
   &__icon {
     height: 6rem;
     width: 6rem;
