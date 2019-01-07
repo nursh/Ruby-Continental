@@ -5,6 +5,9 @@ services:
 before_install:
   - docker build -t nursh/restaurant-application -f ./client/Dockerfile.dev ./client
 
+script:
+  - docker run nursh/redis-complex npm test -- --coverage
+
 after_success:
   - docker build -t nursh/resapp-client ./client
   - docker build -t nursh/resapp-nginx ./nginx
