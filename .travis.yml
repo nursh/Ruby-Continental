@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t nursh/restaurant-application -f ./client/Dockerfile.env ./client
+  - docker build -t nursh/restaurant-application -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run nursh/restaurant-application npm --test --coverage
