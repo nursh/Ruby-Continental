@@ -1,13 +1,12 @@
 sudo: required
-services: 
+services:
   - docker
-
 
 before_install:
   - docker build -t nursh/restaurant-app -f ./client/Dockerfile.env ./client
 
-script: 
-  - docker run nursh/restaurant-app npm --test --coverage
+script:
+  - docker run nursh/res-app npm --test --coverage
 
 after_success:
   - docker build -t nursh/restaurant-client ./client
