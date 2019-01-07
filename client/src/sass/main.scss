@@ -2,3 +2,13 @@
 
 @import "base/base";
 @import "base/typography";
+@import "base/animations";
+
+@import "components/menuCategory";
+@import "components/loading";
+
+@import "layout/header";
+@import "layout/sidebar";
+@import "layout/modal";
+
+@import "pages/menu";

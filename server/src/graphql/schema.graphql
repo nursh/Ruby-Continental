@@ -5,6 +5,7 @@ type Query {
   orders: [Order!]!
   orderItem(id: ID!): OrderItem!
   orderItems: [OrderItem!]!
+  categories: [Category!]!
 }
 
 type Mutation {

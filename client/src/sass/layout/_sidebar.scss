@@ -1,0 +1,56 @@
+.sidebar {
+  background-color: $sidebar-color;
+  position: sticky;
+  padding: 1rem 0;
+  padding-bottom: 10rem;
+
+  &__categories {
+    margin-top: 3rem;
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $highlight-color;
+    border-left: .5rem solid $color-primary;
+    cursor: pointer;
+    height: 100%;
+    width: 1px;
+    transform: scaleY(0);
+    transition: all .5s;
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    width: 100%;
+    transform: scaleY(1);
+  } 
+
+  &__icon {
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1.5rem;
+  }
+
+  &__link:link,
+  &__link:visited {
+    color: $color-primary;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem;
+    padding-left: 4rem;
+
+    position: relative;
+    z-index: 10;
+  }
+}
+
+

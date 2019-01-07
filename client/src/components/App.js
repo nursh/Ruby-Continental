@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        App is Running
-      </div>
-    );
-  }
-}
+import Menu from './Menu';
+
+const App = () => (
+  <Router>
+    <div>
+      <Route exact path="/" component={Menu} />
+    </div>
+  </Router>
+);
 
 export default App;
