@@ -7,6 +7,11 @@ class Modal extends Component {
     quantity: 0
   }
 
+  hide = () => {
+    this.setState({ quantity: 0 });
+    this.props.hide();
+  }
+
   addQuantity = () => {
     this.setState(prevState => ({
       quantity: prevState.quantity + 1
@@ -27,11 +32,14 @@ class Modal extends Component {
   }
 
   render() {
+    const { show, hide } = this.props;
+    const item = (!this.props.item) ? '' : this.props.item;
+    const className = show ? 'modal modal--display' : 'modal--display-none'
     return (
-      <div className="modal" id="modal">
+      <div className={className} id="modal">
         <div className="modal__content">
-          <h4 className="modal__heading">Orange Juice</h4>
-          <a href="#menu" className="modal__close">&times;</a>
+          <h4 className="modal__heading">{item.name}</h4>
+          <a href="#" className="modal__close" onClick={this.hide}>&times;</a>
           <div className="modal__body">
             <button className="modal__button" onClick={this.reduceQuantity}>-</button>
             <span className="modal__quantity">{this.state.quantity}</span>

@@ -1,21 +1,11 @@
-const categories = [
-  "Breakfast",
-  "Main Dish",
-  "Soups",
-  "Bites",
-  "Rice Dishes",
-  "African Hot Pot",
-  "Delights",
-  "Cold Starter",
-  "Peppered Bites",
-  "Pet Drinks",
-  "Bottle Drinks",
-  "Can Drinks",
-  "Juice"
-]
-
 const imgSrc = (category) => category.toLowerCase().replace(/\s/g, '-');
 
-const menuCategories = () => categories.map(cat => ({ name: cat.toUpperCase(), src: imgSrc(cat) }));
+const menuCategories = (categories) => {
+  return categories.map(category => {
+      const name = category.replace(/_/g, ' ');
+      const src = imgSrc(name);
+      return { name, src, category }
+  });
+}
 
 export default menuCategories;

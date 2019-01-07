@@ -13,6 +13,7 @@ class Sidebar extends Component {
       itemNo === index ? true : false
     );
     this.setState({ activeItems: updatedItems });
+    this.props.getSelectedItem(this.props.categories[index]);
   };
 
   componentDidMount() {
