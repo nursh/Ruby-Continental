@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-
+import { connect } from "react-redux";
 
 import IconItem from "./IconItem";
 
@@ -31,7 +30,7 @@ class HeaderIcons extends Component {
         />
         <IconItem
           name="order"
-          path="/"
+          path="/order"
           active={second}
           index={1}
           toggleLink={this.toggleLink}
