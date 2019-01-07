@@ -18,7 +18,7 @@ export default {
     const { category } = args;
     const menuRepo = getConnection().getRepository(MenuItem);
     if (category) {
-      const menuItems = await menuRepo.findOne({ category });
+      const menuItems = await menuRepo.find({ category });
       return menuItems;
     }
     const menuItems = await menuRepo.find();
