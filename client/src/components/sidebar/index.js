@@ -23,7 +23,6 @@ class Sidebar extends Component {
   renderCategories() {
     const { activeItems } = this.state;
     return this.props.categories.map(({ name, src }, index) => {
-      console.log(activeItems[index]);
       return (
         <SidebarItem
           key={name}

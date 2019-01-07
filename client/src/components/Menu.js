@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import { graphql } from 'react-apollo';
 
 
 import menuCategories from "../utils/categories";
 import Sidebar from "./sidebar";
 import HeaderIcons from "./header/HeaderIcons";
 import MenuCategory from "./MenuCategory";
+import { getMenuItems } from '../graphql/MenuItems';
 
 class Menu extends Component {
 
   render() {
+    console.log(this.props.data);
     const categories = menuCategories();
     return (
       <div className="menu" id="menu">
@@ -24,4 +27,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default graphql(getMenuItems)(Menu);

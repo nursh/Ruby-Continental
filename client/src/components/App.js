@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 import Menu from './Menu';
+import Loading from './Loading';
 
 const App = () => (
   <Router>
