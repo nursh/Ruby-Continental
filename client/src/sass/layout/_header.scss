@@ -1,6 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1rem solid $color-primary;
+  padding: 1rem 3rem;
+
+  .header h1 {
+    align-self: flex-end;
+  }
+}
+
 .header-icons {
   display: flex;
-  justify-content: flex-end;
   padding: 2rem 3rem;
 
   &__item {

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 
-class Order extends Order {
+import Header from './header';
+
+class Order extends Component {
 
   render() {
     return (
       <div>
-        Order
+        <Header />
       </div>
     );
   }
