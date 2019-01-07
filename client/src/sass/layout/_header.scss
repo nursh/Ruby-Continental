@@ -4,7 +4,7 @@
   padding: 2rem 3rem;
 
   &__item {
-    
+    position: relative;
     &:not(:last-child) {
       margin-right: 10rem;
     }
@@ -29,5 +29,20 @@
   &__link--active::after,
   &__link:hover::after {
     width: 2rem;
+  }
+
+  &__notification {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: $color-primary;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: .1rem;
+    display: none;
+
+    &--show {
+      display: block;
+    }
   }
 }

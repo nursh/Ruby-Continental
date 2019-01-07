@@ -4,10 +4,13 @@ import React from 'react';
 import HeaderIcons from './HeaderIcons';
 
 
-const Header = () => (
-  <div>
-    <HeaderIcons />
-  </div>
-)
+const Header = () => {
+  return (
+    <div>
+      <HeaderIcons />
+    </div>
+  );
+}
 
-export default Header;
+
+export default (Header);

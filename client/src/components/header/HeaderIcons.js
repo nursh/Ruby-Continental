@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+
 
 import IconItem from "./IconItem";
 
@@ -25,6 +27,7 @@ class HeaderIcons extends Component {
           active={first}
           index={0}
           toggleLink={this.toggleLink}
+          items={this.props.items}
         />
         <IconItem
           name="order"
@@ -32,6 +35,7 @@ class HeaderIcons extends Component {
           active={second}
           index={1}
           toggleLink={this.toggleLink}
+          items={this.props.items}
         />
         <IconItem
           name="wallet"
@@ -39,10 +43,12 @@ class HeaderIcons extends Component {
           active={third}
           index={2}
           toggleLink={this.toggleLink}
+          items={this.props.items}
         />
       </div>
     );
   }
 }
 
-export default HeaderIcons;
+const mapStateToProps = ({ items }) => ({ items });
+export default connect(mapStateToProps)(HeaderIcons);
