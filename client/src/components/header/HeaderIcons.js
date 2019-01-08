@@ -49,7 +49,7 @@ class HeaderIcons extends Component {
         />
         <IconItem
           name="wallet"
-          path="/"
+          path="/payment"
           active={third}
           index={2}
           toggleLink={this.toggleLink}
