@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM, ADD_QUANTITY, REDUCE_QUANTITY } from "../actions/types";
+import { ADD_ITEM, REMOVE_ITEM, UPDATE_ITEM } from "../actions/types";
 import update from 'immutability-helper';
 
 
@@ -11,30 +11,19 @@ export default (items = [], action) => {
       return items
         .filter(item => item.name !== action.payload);
     }
-    case ADD_QUANTITY: {
-      const itemIndex = items.findIndex(item => item.name === action.payload);
+    case UPDATE_ITEM: {
+      const { name, quantity } = action.payload;
+      const itemIndex = items.findIndex(item => item.name === name);
+
+      if (quantity === 0) return items.filter(item => item.name !== name);
+
       return update(items, {
         [itemIndex]: {
           quantity: {
-            $apply: (x) => x += 1
+            $set: quantity
           }
         }
       });
-    }
-    case REDUCE_QUANTITY: {
-      const itemIndex = items.findIndex(item => item.name === action.payload);
-      const newItems = update(items, {
-        [itemIndex]: {
-          quantity: {
-            $apply: (x) => {
-              x -= 1;
-              return x < 1 ? 0 : x;
-            } 
-          }
-        }
-      });
-      return newItems
-      .filter(item => item.quantity > 0);
     }
     default: 
       return items;
