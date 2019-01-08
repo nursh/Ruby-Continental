@@ -5,7 +5,7 @@ import IconItem from "./IconItem";
 
 class HeaderIcons extends Component {
   state = {
-    activeLink: [true, false, false]
+    activeLink: []
   };
 
   toggleLink = linkIndex => {
@@ -15,6 +15,17 @@ class HeaderIcons extends Component {
     );
     this.setState({ activeLink: updatedLinks });
   };
+
+  componentDidMount() {
+    if (this.props.active) {
+      const links = [ false, false, false ];
+      links[this.props.active] = true;
+      this.setState({ activeLink: links });
+    } else {
+      this.setState({ activeLink: [true, false, false]})
+    }
+    
+  }
 
   render() {
     const [first, second, third] = this.state.activeLink;

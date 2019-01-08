@@ -1,8 +1,8 @@
 .header {
   display: flex;
   justify-content: space-between;
-  border-top: 1rem solid $color-primary;
-  padding: 1rem 3rem;
+  border-top: .8rem solid $color-primary;
+  padding: .5rem 3rem;
 
   .header h1 {
     align-self: flex-end;
@@ -12,6 +12,7 @@
 .header-icons {
   display: flex;
   padding: 2rem 3rem;
+  justify-content: flex-end;
 
   &__item {
     position: relative;
@@ -21,8 +22,8 @@
   }
 
   &__icon {
-    height: 4rem;
-    width: 4rem;
+    height: 3.5rem;
+    width: 3.5rem;
   }
 
   &__link::after {

@@ -1,0 +1,14 @@
+.menu__button {
+
+  &:link,
+  &:visited {
+    color: #fff;
+    background-color: $color-primary;
+    padding: 1rem 2rem;
+    display: block;
+    text-decoration: none;
+    border-radius: .2rem;
+    font-size: 1.6rem;
+  }
+
+}
