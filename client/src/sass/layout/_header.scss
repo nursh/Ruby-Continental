@@ -1,7 +1,18 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-top: .8rem solid $color-primary;
+  padding: .5rem 3rem;
+
+  .header h1 {
+    align-self: flex-end;
+  }
+}
+
 .header-icons {
   display: flex;
-  justify-content: flex-end;
   padding: 2rem 3rem;
+  justify-content: flex-end;
 
   &__item {
     position: relative;
@@ -11,8 +22,8 @@
   }
 
   &__icon {
-    height: 4rem;
-    width: 4rem;
+    height: 3.5rem;
+    width: 3.5rem;
   }
 
   &__link::after {
@@ -32,13 +43,13 @@
   }
 
   &__notification {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1rem;
+    width: 1rem;
     background-color: $color-primary;
     border-radius: 50%;
     position: absolute;
-    top: 0;
-    right: .1rem;
+    top: .3rem;
+    right: .3rem;
     display: none;
 
     &--show {

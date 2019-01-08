@@ -7,6 +7,13 @@ class Modal extends Component {
     quantity: 0
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.item !== prevProps.item) {
+      const quantity = this.props.item.quantity || 0;
+      this.setState({ quantity });
+    }
+  }
+
   hide = () => {
     this.setState({ quantity: 0 });
     this.props.hide();
@@ -32,14 +39,13 @@ class Modal extends Component {
   }
 
   handleClick = () => {
-    if (this.props.text === 'Add to order') {
-      const item = {
-        name: this.props.item.name,
-        price: this.props.item.price,
-        quantity: this.state.quantity
-      };
-      this.props.action(item);
-    }
+    const item = {
+      name: this.props.item.name,
+      price: this.props.item.price,
+      quantity: this.state.quantity
+    };
+    this.props.action(item);
+    this.props.hide();
   }
 
   render() {
