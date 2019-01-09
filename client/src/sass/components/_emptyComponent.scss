@@ -1,0 +1,18 @@
+.empty {
+
+  &__image {
+    height: 30rem;
+    width: 30rem;
+  }
+
+  &__message {
+    color: $text-color;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  &__button {
+    align-self: center;
+  }
+}

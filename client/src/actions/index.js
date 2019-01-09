@@ -3,8 +3,6 @@ import {
   REMOVE_ITEM,
   CREATE_ORDER,
   UPDATE_ITEM,
-  ADD_QUANTITY,
-  REDUCE_QUANTITY
 } from "./types";
 
 export const createOrder = orderId => ({

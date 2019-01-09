@@ -1,0 +1,13 @@
+.payment {
+
+  &__button {
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: $color-primary;
+    padding: 1rem 2rem;
+    border-radius: .2rem;
+    font-size: 1.6rem;
+  }
+
+}

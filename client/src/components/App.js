@@ -9,7 +9,7 @@ import Payment from './payment';
 const App = () => (
   <Router>
     <div>
-      <Route exact path="/" component={Menu} />
+      <Route exact path="/menu" component={Menu} />
       <Route path="/order" component={Order} />
       <Route path="/payment" component={Payment} />
     </div>

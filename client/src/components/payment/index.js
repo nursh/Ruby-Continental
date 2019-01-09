@@ -5,31 +5,36 @@ import { NavLink } from 'react-router-dom';
 
 import Header from '../header';
 import card from '../../img/card.svg';
+import Checkout from './Checkout';
+import EmptyComponent from '../EmptyComponent';
 
 class Payment extends Component {
-
   render() {
     return (
       <div className="payment">
         <Header activeLink={2} />
         {
           (this.props.items.length < 1)
-            ? <EmptyOrder />
-            : 'Payment'
+            ? <EmptyComponent
+                heading="Payment"
+                img={true}
+                src=""
+                message="No Item(s) to pay for"
+              />
+            : <PaymentForm />
         }
       </div>
     )
   }
 }
 
-const EmptyOrder = () => (
+const PaymentForm = () => (
   <div>
-    <h2 className="order__heading">Payment</h2>
-    <div className="order__content">
-      <img src={card} alt="Payment card" className="order__image" />
-      <p className="order__message">No Item(s) to pay for</p>
-      <NavLink to="/" className="menu__button order__button" >See our Menu</NavLink>
-    </div>
+    <h2 className="page__heading">
+      <img src={card} alt="Payment card" className="page__heading-image" />
+      <span>Payment</span> 
+    </h2>
+    <Checkout />
   </div>
 );
 

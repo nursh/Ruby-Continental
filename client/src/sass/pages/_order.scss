@@ -1,49 +1,5 @@
 .order {
 
-  &__heading {
-    display: flex;
-    justify-content: center;
-    color: $text-color;
-    font-size: 3.5rem;
-    text-align: center;
-    font-weight: 900;
-
-    &-image {
-      height: 6rem;
-      width: 6rem;
-      margin-right: 2rem;
-    }
-  }
-
-  &__image {
-    height: 30rem;
-    width: 30rem;
-  }
-
-  &__content {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    &--margin {
-      margin-top: 5rem;
-    }
-  }
-
-  &__message {
-    color: $text-color;
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
-
-  &__button {
-    align-self: center;
-  }
-
   &__modal {
     width: 70%;
     margin-bottom: 1.5rem;
