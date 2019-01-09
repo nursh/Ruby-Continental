@@ -1,15 +1,9 @@
 import {
   ADD_ITEM,
   REMOVE_ITEM,
-  CREATE_ORDER,
   UPDATE_ITEM,
   CALC_TOTAL
 } from "./types";
-
-export const setOrderId = orderId => ({
-  type: CREATE_ORDER,
-  payload: orderId
-});
 
 export const addItemToOrder = item => ({
   type: ADD_ITEM,

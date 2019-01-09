@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 
 import { createOrder, updateOrder } from '../../graphql/Order';
 import { createOrderItem } from '../../graphql/OrderItems';
-import { setOrderId } from '../../actions';
 
 
 class CheckoutElements extends Component {
@@ -18,6 +17,7 @@ class CheckoutElements extends Component {
     evt.preventDefault();
     const token = await this.props.stripe.createToken() 
     const orderId = await this.createOrder();
+    await this.createOrderItems(orderId);
     token.amount = this.props.total;
     token.orderId = orderId;
     console.log(token);
@@ -33,6 +33,10 @@ class CheckoutElements extends Component {
         total: this.props.total
       }
     });
+    return id;
+  }
+
+  createOrderItems = (id) => {
     this.props.items.map(async ({ name, quantity, price }) => {
       await this.props.createOrderItem({
         variables: {
@@ -43,7 +47,6 @@ class CheckoutElements extends Component {
         }
       })
     });
-    return id;
   }
 
   style = {
@@ -80,11 +83,8 @@ class CheckoutElements extends Component {
 }
 
 
-const mapStateToProps = ({ order, items, total }) => ({ order, items, total });
-export default connect(mapStateToProps, {
-    pure: false,
-    setOrderId
-})(injectStripe(
+const mapStateToProps = ({ items, total }) => ({ items, total });
+export default connect(mapStateToProps, { pure: false })(injectStripe(
   (compose(
     graphql(createOrder, { name: 'createOrder' }),
     graphql(updateOrder, { name: 'updateOrder' }),
