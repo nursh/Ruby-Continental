@@ -33,7 +33,7 @@ class HeaderIcons extends Component {
       <div className="header-icons">
         <IconItem
           name="menu"
-          path="/"
+          path="/menu"
           active={first}
           index={0}
           toggleLink={this.toggleLink}
@@ -49,7 +49,7 @@ class HeaderIcons extends Component {
         />
         <IconItem
           name="wallet"
-          path="/"
+          path="/payment"
           active={third}
           index={2}
           toggleLink={this.toggleLink}

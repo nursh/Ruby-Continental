@@ -18,7 +18,7 @@ export class OrderItem {
   @Column()
   price: number;
 
-  @ManyToOne(type => Order, order => order.items)
+  @ManyToOne(type => Order, order => order.items, { onDelete: 'CASCADE' })
   order: Order;
 
   @BeforeInsert()

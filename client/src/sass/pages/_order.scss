@@ -1,47 +1,12 @@
 .order {
 
-  &__heading {
-    display: flex;
-    justify-content: center;
-    color: $text-color;
-    font-size: 3.5rem;
-    text-align: center;
-    font-weight: 900;
-
-    &-image {
-      height: 6rem;
-      width: 6rem;
-      margin-right: 2rem;
-    }
-  }
-
-  &__image {
-    height: 30rem;
-    width: 30rem;
-  }
-
-  &__content {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    &--margin {
-      margin-top: 5rem;
-    }
-  }
-
-  &__message {
-    color: $text-color;
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
-
-  &__button {
-    align-self: center;
+  &__checkout:link,
+  &__checkout:visited {
+    background-color: $color-primary;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem 4rem;
+    text-decoration: none;
   }
 
   &__modal {
@@ -50,6 +15,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__total {
+    width: 20%;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__remove {

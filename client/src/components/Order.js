@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import Header from './header';
+import EmptyComponent from './EmptyComponent';
 import sprite from '../img/image-sprite.svg';
 import Modal from './modal';
 import { updateItem, removeItemFromOrder } from '../actions';
@@ -21,16 +22,21 @@ class Order extends Component {
     this.setState({ show: false });
   }
 
+  calcTotal = () => {
+    return this.props.items.reduce((sum, item) => 
+      sum += item.quantity * item.price, 0);
+  }
+
   renderOrderItems = () => {
     return (
       <div>
-        <h2 className="order__heading">
-          <svg className="order__heading-image">
+        <h2 className="page__heading">
+          <svg className="page__heading-image">
             <use xlinkHref={`${sprite}#chef`} />
           </svg>  
           <span>Order</span> 
         </h2>
-        <div className="order__content order__content--margin">
+        <div className="content content--margin">
           {
             this.props.items.map(item => (
               <div 
@@ -50,6 +56,16 @@ class Order extends Component {
               </div>
             ))
           }
+          <h2 className="order__total">
+            <span>Total:</span> 
+            <span>&#8358;{this.calcTotal()}</span>
+          </h2>
+          <NavLink
+            className="order__checkout"
+            to="/payment"
+          >
+            Proceed to Checkout
+          </NavLink>
         </div>
       </div>
     );
@@ -62,7 +78,12 @@ class Order extends Component {
         {
           this.props.items.length > 0 
             ? this.renderOrderItems() 
-            : <EmptyOrder />
+            : <EmptyComponent
+                heading="Order"
+                message="Our chefs are waiting for your order"
+                src="chef" 
+                img={false}
+              />
         }
         <Modal
           hide={this.hideModal}
@@ -76,21 +97,9 @@ class Order extends Component {
   }
 }
 
-const EmptyOrder = () => (
-  <div>
-    <h2 className="order__heading">Order</h2>
-    <div className="order__content">
-      <svg className="order__image">
-        <use xlinkHref={`${sprite}#chef`} />
-      </svg>
-      <p className="order__message">Our chefs are waiting for your order</p>
-      <NavLink to="/" className="menu__button order__button" >See our Menu</NavLink>
-    </div>
-  </div>
-);
-
-
-
 
 const mapStateToProps = ({ items }) => ({ items })
-export default connect(mapStateToProps, { updateItem, removeItemFromOrder })(Order);
+export default connect(mapStateToProps, { 
+  updateItem,
+  removeItemFromOrder
+})(Order);
