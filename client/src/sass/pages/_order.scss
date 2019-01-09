@@ -1,5 +1,14 @@
 .order {
 
+  &__checkout:link,
+  &__checkout:visited {
+    background-color: $color-primary;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem 4rem;
+    text-decoration: none;
+  }
+
   &__modal {
     width: 70%;
     margin-bottom: 1.5rem;

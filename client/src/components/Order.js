@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import Header from './header';
 import EmptyComponent from './EmptyComponent';
 import sprite from '../img/image-sprite.svg';
 import Modal from './modal';
-import { updateItem, removeItemFromOrder } from '../actions';
+import { updateItem, removeItemFromOrder, calcTotal } from '../actions';
 
 class Order extends Component {
   state = {
@@ -50,6 +51,13 @@ class Order extends Component {
               </div>
             ))
           }
+          <NavLink
+            className="order__checkout"
+            to="/payment"
+            onClick={() => this.props.calcTotal(this.props.items)}
+          >
+            Proceed to Checkout
+          </NavLink>
         </div>
       </div>
     );
@@ -83,4 +91,8 @@ class Order extends Component {
 
 
 const mapStateToProps = ({ items }) => ({ items })
-export default connect(mapStateToProps, { updateItem, removeItemFromOrder })(Order);
+export default connect(mapStateToProps, { 
+  updateItem,
+  removeItemFromOrder,
+  calcTotal
+})(Order);

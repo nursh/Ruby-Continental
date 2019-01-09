@@ -1,13 +1,52 @@
 .payment {
 
+  &__total {
+    color: $text-color;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
   &__button {
     border: none;
     outline: none;
     color: #fff;
     background-color: $color-primary;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
     border-radius: .2rem;
-    font-size: 1.6rem;
+    font-size: 2rem;
+    align-self: center;
+    margin-top: 5rem;
+  }
+
+  &__card {
+    background-color: rgba(#f2f2f2, 0.5);
+    padding: 1rem 0;
+    border-bottom: .5rem solid $color-primary;
+  }
+
+  &__form {
+    width: 50%;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__element {
+      margin-bottom: 3rem;
+
+      &--small {
+        display: flex;
+        justify-content: space-between;
+
+        & > * {
+          flex-basis: 50%;
+
+          &:not(:last-child) {
+            margin-right: 2rem;
+          }
+        }
+      }
+    }
   }
 
 }

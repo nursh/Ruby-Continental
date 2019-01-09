@@ -10,7 +10,7 @@ class Checkout extends Component {
     return (
       <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
         <Elements>
-          <CheckoutElements />
+          <CheckoutElements total={this.props.total} />
         </Elements>
       </StripeProvider>
     );
