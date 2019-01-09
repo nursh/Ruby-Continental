@@ -6,8 +6,14 @@ import Header from '../header';
 import card from '../../img/card.svg';
 import Checkout from './Checkout';
 import EmptyComponent from '../EmptyComponent';
+import { calcTotal } from '../../actions';
 
 class Payment extends Component {
+
+  componentDidMount() {
+    this.props.calcTotal(this.props.items);
+  }
+
   render() {
     return (
       <div className="payment">
@@ -18,7 +24,7 @@ class Payment extends Component {
                 heading="Payment"
                 img={true}
                 src=""
-                message="No Item(s) to have been ordered"
+                message="No Item(s) have been ordered"
               />
             : <PaymentForm total={this.props.total} />
         }
@@ -41,4 +47,4 @@ const PaymentForm = ({ total }) => (
 );
 
 const mapStateToProps = ({ items, total }) => ({ items, total });
-export default connect(mapStateToProps)(Payment);
+export default connect(mapStateToProps, { calcTotal })(Payment);

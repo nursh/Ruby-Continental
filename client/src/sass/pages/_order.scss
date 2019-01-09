@@ -17,6 +17,14 @@
     align-items: center;
   }
 
+  &__total {
+    width: 20%;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__remove {
     border: none;
     outline: none;

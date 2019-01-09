@@ -5,6 +5,7 @@ import update from 'immutability-helper';
 export default (items = [], action) => {
   switch(action.type) {
     case ADD_ITEM: {
+      if (action.payload.quantity === 0) return items;
       return [...items, action.payload];
     }
     case REMOVE_ITEM: {

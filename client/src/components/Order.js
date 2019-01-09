@@ -6,7 +6,7 @@ import Header from './header';
 import EmptyComponent from './EmptyComponent';
 import sprite from '../img/image-sprite.svg';
 import Modal from './modal';
-import { updateItem, removeItemFromOrder, calcTotal } from '../actions';
+import { updateItem, removeItemFromOrder } from '../actions';
 
 class Order extends Component {
   state = {
@@ -20,6 +20,11 @@ class Order extends Component {
 
   hideModal = () => {
     this.setState({ show: false });
+  }
+
+  calcTotal = () => {
+    return this.props.items.reduce((sum, item) => 
+      sum += item.quantity * item.price, 0);
   }
 
   renderOrderItems = () => {
@@ -51,10 +56,13 @@ class Order extends Component {
               </div>
             ))
           }
+          <h2 className="order__total">
+            <span>Total:</span> 
+            <span>&#8358;{this.calcTotal()}</span>
+          </h2>
           <NavLink
             className="order__checkout"
             to="/payment"
-            onClick={() => this.props.calcTotal(this.props.items)}
           >
             Proceed to Checkout
           </NavLink>
@@ -93,6 +101,5 @@ class Order extends Component {
 const mapStateToProps = ({ items }) => ({ items })
 export default connect(mapStateToProps, { 
   updateItem,
-  removeItemFromOrder,
-  calcTotal
+  removeItemFromOrder
 })(Order);
