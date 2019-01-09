@@ -6,7 +6,7 @@ import {
   CALC_TOTAL
 } from "./types";
 
-export const createOrder = orderId => ({
+export const setOrderId = orderId => ({
   type: CREATE_ORDER,
   payload: orderId
 });

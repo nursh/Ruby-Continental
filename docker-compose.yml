@@ -14,6 +14,8 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    env_file:
+      - ./.env
   graphql:
     build:
       dockerfile: Dockerfile.dev
