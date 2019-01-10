@@ -4,6 +4,7 @@ import { MenuItem } from "../../entity/MenuItem";
 import { Order } from "../../entity/Order";
 import { OrderItem } from "../../entity/OrderItem";
 import { Category } from "../../entity/Category";
+import { Payment } from '../../entity/Payment';
 
 import "../../db";
 
@@ -27,12 +28,12 @@ export default {
   order: async (_: any, args: any) => {
     const { id } = args;
     const orderRepo = getConnection().getRepository(Order);
-    const order = await orderRepo.findOne(id);
+    const order = await orderRepo.findOne(id, { relations: ['payment'] });
     return order;
   },
   orders: async (_: any, args: any) => {
     const orderRepo = getConnection().getRepository(Order);
-    const orders = await orderRepo.find();
+    const orders = await orderRepo.find({ relations: ['payment'] });
     return orders;
   },
   orderItem: async (_: any, args: any) => {
@@ -49,5 +50,10 @@ export default {
   categories: () => {
     const categories = Object.keys(Category).filter(k => typeof Category[k as any] === "number"); 
     return categories;
+  },
+  payments: async () => {
+    const paymentRepo = getConnection().getRepository(Payment);
+    const payments = await paymentRepo.find();
+    return payments;
   }
 };

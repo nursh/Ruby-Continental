@@ -3,11 +3,14 @@ import {
   PrimaryColumn,
   Column,
   OneToMany,
-  BeforeInsert
+  BeforeInsert,
+  OneToOne,
+  JoinColumn
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
 import { OrderItem } from "./OrderItem";
+import { Payment } from './Payment';
 
 @Entity("Order")
 export class Order {
@@ -19,6 +22,10 @@ export class Order {
 
   @OneToMany(type => OrderItem, item => item.order, { eager: true })
   items: OrderItem[];
+
+  @OneToOne(type => Payment, payment => payment.order)
+  @JoinColumn()
+  payment: Payment
 
   @BeforeInsert()
   createId() {
