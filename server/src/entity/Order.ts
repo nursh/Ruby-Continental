@@ -23,9 +23,8 @@ export class Order {
   @OneToMany(type => OrderItem, item => item.order, { eager: true })
   items: OrderItem[];
 
-  @OneToOne(type => Payment, payment => payment.order)
-  @JoinColumn()
-  payment: Payment
+  @OneToOne(type => Payment, payment => payment.order, { eager: true })
+  payment: Payment;
 
   @BeforeInsert()
   createId() {

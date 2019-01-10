@@ -73,6 +73,7 @@ type Order {
   id: ID!
   items: [OrderItem!]!
   total: Float!
+  payment: Payment!
 }
 
 type OrderItem {

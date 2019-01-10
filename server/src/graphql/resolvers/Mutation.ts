@@ -1,5 +1,5 @@
 import { getConnection } from "typeorm";
-import Stripe from 'stripe';
+import * as Stripe from 'stripe';
 
 import { MenuItem } from "../../entity/MenuItem";
 import { Order } from "../../entity/Order";

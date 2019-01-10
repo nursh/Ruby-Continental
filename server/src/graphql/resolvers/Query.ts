@@ -28,12 +28,12 @@ export default {
   order: async (_: any, args: any) => {
     const { id } = args;
     const orderRepo = getConnection().getRepository(Order);
-    const order = await orderRepo.findOne(id, { relations: ['payment'] });
+    const order = await orderRepo.findOne(id);
     return order;
   },
   orders: async (_: any, args: any) => {
     const orderRepo = getConnection().getRepository(Order);
-    const orders = await orderRepo.find({ relations: ['payment'] });
+    const orders = await orderRepo.find();
     return orders;
   },
   orderItem: async (_: any, args: any) => {
@@ -53,7 +53,7 @@ export default {
   },
   payments: async () => {
     const paymentRepo = getConnection().getRepository(Payment);
-    const payments = await paymentRepo.find();
+    const payments = await paymentRepo.find({ relations: ["order"] });
     return payments;
   }
 };
