@@ -5,11 +5,12 @@ import { injectStripe,
   CardCVCElement } from 'react-stripe-elements';
 import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 
 import { createOrder, updateOrder } from '../../graphql/Order';
 import { createOrderItem } from '../../graphql/OrderItems';
-
+import { processPayment } from '../../graphql/stripe';
 
 class CheckoutElements extends Component {
 
@@ -20,7 +21,7 @@ class CheckoutElements extends Component {
     await this.createOrderItems(orderId);
     token.amount = this.props.total;
     token.orderId = orderId;
-    console.log(token);
+    await this.processPayment(token);
   }
 
   createOrder = async () => {
@@ -47,6 +48,18 @@ class CheckoutElements extends Component {
         }
       })
     });
+  }
+
+  processPayment = (token) => {
+    const { id } = token.token;
+    this.props.processPayment({
+      variables: {
+        amount: token.amount * 100,
+        order: token.orderId,
+        token: id
+      }
+    });
+    this.props.history.push('/thanks');
   }
 
   style = {
@@ -84,9 +97,10 @@ class CheckoutElements extends Component {
 
 
 const mapStateToProps = ({ items, total }) => ({ items, total });
-export default connect(mapStateToProps, { pure: false })(injectStripe(
+export default withRouter(connect(mapStateToProps, { pure: false })(injectStripe(
   (compose(
     graphql(createOrder, { name: 'createOrder' }),
     graphql(updateOrder, { name: 'updateOrder' }),
-    graphql(createOrderItem, { name: 'createOrderItem' })
-  )(CheckoutElements))));
+    graphql(createOrderItem, { name: 'createOrderItem' }),
+    graphql(processPayment, { name: 'processPayment' })
+  )(CheckoutElements)))));

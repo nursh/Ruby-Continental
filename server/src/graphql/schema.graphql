@@ -6,6 +6,7 @@ type Query {
   orderItem(id: ID!): OrderItem!
   orderItems: [OrderItem!]!
   categories: [Category!]!
+  payments: [Payment!]!
 }
 
 type Mutation {
@@ -18,6 +19,7 @@ type Mutation {
   createOrderItem(data: CreateOrderItemInput!): OrderItem!
   updateOrderItem(id: ID!, data: UpdateOrderItemInput!): Boolean!
   deleteOrderItem(id: ID!): Boolean!
+  processPayment(data: PaymentInput!): Payment!
 }
 
 input CreateMenuItemInput {
@@ -48,6 +50,18 @@ input UpdateOrderInput {
   total: Float
 }
 
+input PaymentInput {
+  token: String!
+  amount: Float!
+  order: ID!
+}
+
+type Payment {
+  id: ID!
+  charge: String!
+  order: Order!
+}
+
 type MenuItem {
   id: ID!
   name: String!
@@ -59,6 +73,7 @@ type Order {
   id: ID!
   items: [OrderItem!]!
   total: Float!
+  payment: Payment!
 }
 
 type OrderItem {

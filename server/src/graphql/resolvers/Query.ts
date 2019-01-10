@@ -4,6 +4,7 @@ import { MenuItem } from "../../entity/MenuItem";
 import { Order } from "../../entity/Order";
 import { OrderItem } from "../../entity/OrderItem";
 import { Category } from "../../entity/Category";
+import { Payment } from '../../entity/Payment';
 
 import "../../db";
 
@@ -49,5 +50,10 @@ export default {
   categories: () => {
     const categories = Object.keys(Category).filter(k => typeof Category[k as any] === "number"); 
     return categories;
+  },
+  payments: async () => {
+    const paymentRepo = getConnection().getRepository(Payment);
+    const payments = await paymentRepo.find({ relations: ["order"] });
+    return payments;
   }
 };
