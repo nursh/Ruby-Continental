@@ -1,8 +1,10 @@
 import { getConnection } from "typeorm";
+import * as Stripe from 'stripe';
 
 import { MenuItem } from "../../entity/MenuItem";
 import { Order } from "../../entity/Order";
 import { OrderItem } from "../../entity/OrderItem";
+import { Payment } from '../../entity/Payment';
 import "../../db";
 
 export default {
@@ -67,5 +69,21 @@ export default {
     const { affectedRows } = orderItem.raw;
     if (affectedRows === 1) return true;
     return false;
+  },
+  processPayment: async (_: any, { data }: any) => {
+    const { token, amount, order } = data;
+    const key = process.env.STRIPE_KEY || '';
+    const stripe = new Stripe(key);
+    const charge = await stripe.charges.create({
+      source: token,
+      amount,
+      currency: 'ngn'
+    });
+    const { id } = charge;
+
+    const paymentRepo = getConnection().getRepository(Payment);
+    const paymentItem = paymentRepo.create({ charge: id, order });
+    const payment = paymentRepo.save(paymentItem);
+    return payment;
   }
 };
