@@ -8,7 +8,7 @@ class Checkout extends Component {
 
   render() {
     return (
-      <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
+      <StripeProvider apiKey="pk_test_oBVdfkOc88MQrgX4jy2nWneA">
         <Elements>
           <CheckoutElements total={this.props.total} />
         </Elements>
