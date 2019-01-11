@@ -3,13 +3,14 @@ services:
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./nginx
     ports:
       - "8080:80"
+      - "4000:80"
   client:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./client
     volumes:
       - /app/node_modules
@@ -18,8 +19,7 @@ services:
       - ./.env
   graphql:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./server
     volumes:
       - /app/node_modules
-      - ./server:/app
