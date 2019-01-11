@@ -8,9 +8,8 @@ RUN npm install
 
 COPY . .
 
+EXPOSE 4000
+
 CMD ["npm", "run", "start"]
 
 
-FROM nginx
-EXPOSE 4000
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
