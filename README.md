@@ -30,7 +30,7 @@ The project is a website for a restaurant. A user goes to the site to place an o
 * Stripe Payment using React-Stripe-Elements
 * Nginx for reverse proxy between frontend and backend
 * TravisCI for Continuous Integration
-* Docker for deployment
+* Docker
 * Deployed with Amazon ElasticBeanStalk
 
 ### Deployment Links
